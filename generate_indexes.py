@@ -127,8 +127,8 @@ def convert_map_by_to_markdown(map_by, page_title, link_prefix, spells=True, flo
             if args.offline:
                 output.append("[%s](%s/%s/index.html)   " % (item, link_prefix, item_link_name))
             else:
-                output.append("[%s](%s/%s)   " % (item, link_prefix, item_link_name))
-        output.append(" ")
+                #output.append("[%s](%s/%s.md)  " % (item, link_prefix, item_link_name))
+                output.append("{%% include \"%s/%s.md\" %%}  \n" % (link_prefix, item_link_name))
     return output
 
 
@@ -251,9 +251,8 @@ def generate_md_spell_list(class_name, class_files_path):
                 if args.offline:
                     formatted_line = "[%s](%s/%s/index.html)   " % (spell_name, spells_relative_link_prefix, spell_name_link)
                 else:
-                    formatted_line = "[%s](%s/%s)   " % (spell_name, spells_relative_link_prefix, spell_name_link)
+                    formatted_line = "[%s](%s/%s.md)  " % (spell_name, spells_relative_link_prefix, spell_name_link)
                 md.append(formatted_line)
-            md.append(" ")
     return md
 
 
