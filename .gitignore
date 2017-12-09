@@ -1,7 +1,10 @@
 .idea/
+.vscode/
 site/
 5thsrd_offline/
 docs/spellcasting/spell_lists
 docs/spellcasting/spell_indexes
 docs/gamemaster_rules/magic_item_indexes
 docs/gamemaster_rules/monster_indexes
+package-lock.json
+_book/
