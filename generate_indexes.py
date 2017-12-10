@@ -19,7 +19,7 @@ monsters_md_src = os.path.join(".", "docs", "gamemaster_rules", "monsters")
 monster_indexes_output = os.path.join(".", "docs", "gamemaster_rules", "monster_indexes")
 monsters_relative_link_prefix = "/gamemaster_rules/monsters"
 
-metadata_regex = re.compile(r"(.+\n)+\n")
+metadata_regex = re.compile(r"(.+\n)+\n+")
 
 def create_output_directories():
     directories = [class_spell_lists_output, spell_indexes_output, item_indexes_output, monster_indexes_output]
@@ -41,7 +41,7 @@ def generate_formatted_title(title, spells=True):
         title = str(title)
     if len(title) == 1 and title.isdigit() and spells:
         if title == "0":
-            return "## Cantrips (0 level)"
+            return "## Cantrips"
         if title == "1":
             return "## 1st Level"
         if title == "2":
@@ -129,7 +129,7 @@ def convert_map_by_to_markdown(map_by, page_title, link_prefix, spells=True, flo
         output.append(generate_formatted_title(category, spells))
         for item in sorted(map_by[category]):
             item_link_name = convert_to_linkable_name(item)
-            output.append("\n%s" % item)
+            output.append("\n##%s" % item)
     return output
 
 def convert_spells_map_to_list(spell_map):
@@ -253,14 +253,12 @@ def generate_md_spell_list(class_name, class_files_path):
             # Loop over each line, should be one spell name per line
             for line in f.readlines():
                 spell_name = line.strip()
-                spell_name_link = convert_to_linkable_name(spell_name)
-                if args.offline:
-                    formatted_line = "[%s](%s/%s/index.html)   " % (spell_name, spells_relative_link_prefix, spell_name_link)
-                else:
-                    formatted_line = "[%s](%s/%s.md)  " % (spell_name, spells_relative_link_prefix, spell_name_link)
-                md.append(formatted_line)
+                spell_name_link = "%s.md" % convert_to_linkable_name(spell_name)
+                # Get the spell text from the file
+                with open(os.path.join(spells_md_src, spell_name_link), mode="r", encoding="utf-8") as f:
+                    raw_data = f.read().replace("\r\n", "\n")
+                    md.append("\n##%s" % trim_metadata(raw_data))
     return md
-
 
 def generate_linked_spell_lists(spell_map):
     spell_list = convert_spells_map_to_list(spell_map)
@@ -271,7 +269,6 @@ def generate_linked_spell_lists(spell_map):
             print("Generating spell list for class: %s" % class_name)
             class_md = generate_md_spell_list(class_name, class_files_path)
             write_md_to_file(class_md, os.path.join(class_spell_lists_output, "%s_spells.md" % class_name))
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -287,6 +284,7 @@ if __name__ == "__main__":
     generate_spells_by_level(spell_map)
     generate_spells_by_name(spell_map)
     generate_spells_by_school(spell_map)
+    generate_linked_spell_lists(spell_map)
 
     generate_items_by_name(item_map)
     generate_items_by_type(item_map)
