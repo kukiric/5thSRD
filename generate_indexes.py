@@ -41,7 +41,7 @@ def generate_formatted_title(title, spells=True):
         title = str(title)
     if len(title) == 1 and title.isdigit() and spells:
         if title == "0":
-            return "## Cantrips"
+            return "## Cantrips (0-Level)"
         if title == "1":
             return "## 1st Level"
         if title == "2":
