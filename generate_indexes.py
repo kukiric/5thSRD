@@ -128,7 +128,7 @@ def convert_map_by_to_markdown(map_by, page_title, link_prefix, spells=True, flo
         output.append(generate_formatted_title(category, spells))
         for item in sorted(map_by[category]):
             item_link_name = convert_to_linkable_name(item)
-            output.append("\n##%s" % item)
+            output.append("\n%s" % item)
     return output
 
 def convert_spells_map_to_list(spell_map):
@@ -246,7 +246,7 @@ def generate_md_spell_list(class_name, class_files_path):
     files = sorted(os.listdir(class_files_path))
     for file in files:
         # Insert the section header
-        md.append(generate_formatted_title(file.split(".")[0], True, class_name.capitalize))
+        md.append(generate_formatted_title(file.split(".")[0], True, class_name.capitalize()))
         with open("%s/%s" % (class_files_path, file)) as f:
             # Loop over each line, should be one spell name per line
             for line in f.readlines():
@@ -255,7 +255,7 @@ def generate_md_spell_list(class_name, class_files_path):
                 # Get the spell text from the file
                 with open(os.path.join(spells_md_src, spell_name_link), mode="r", encoding="utf-8") as f:
                     raw_data = f.read().replace("\r\n", "\n")
-                    md.append("\n##%s" % trim_metadata(raw_data))
+                    md.append("\n%s" % trim_metadata(raw_data))
     return md
 
 def generate_linked_spell_lists(spell_map):
