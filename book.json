@@ -1,4 +1,10 @@
 {
 	"root": "docs/",
-	"title": "5th Edition SRD (5thsrd.org)"
+	"title": "5th Edition SRD (5thsrd.org)",
+	"theme-default": {
+		"showLevel": false
+	},
+	"theme-ebook": {
+		"showLevel": false
+	}
 }

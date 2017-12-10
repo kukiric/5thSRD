@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import os
-import argparse
 import markdown
 import codecs
 import re
@@ -34,24 +33,24 @@ def write_md_to_file(md, path):
         for line in md:
             f.write(line + "\n")
 
-def generate_formatted_title(title, spells=True):
+def generate_formatted_title(title, spells=True, class_name = ""):
     if type(title) == int:
         title = str(title)
     if type(title) == float:
         title = str(title)
     if len(title) == 1 and title.isdigit() and spells:
         if title == "0":
-            return "## Cantrips (0-Level)"
+            return "# %s Cantrips (0-Level)" % class_name
         if title == "1":
-            return "## 1st Level"
+            return "# %s 1st Level Spells" % class_name
         if title == "2":
-            return "## 2nd level"
+            return "# %s 2nd Level Spells" % class_name
         if title == "3":
-            return "## 3rd level"
+            return "# %s 3rd Level Spells" % class_name
         else:
-            return "## %sth level" % title
+            return "# %s %sth level Spells" % (class_name, title)
     else:
-        return "## %s" % title.capitalize()
+        return "# %s" % title.capitalize()
 
 # Remove all metadata (eg. title, level, magic school) from the top of a file until the first empty line is found
 def trim_metadata(str):
@@ -244,11 +243,10 @@ def generate_monsters_by_cr(monster_map):
 
 def generate_md_spell_list(class_name, class_files_path):
     md = []
-    md.append("# %s Spells" % class_name.capitalize())
     files = sorted(os.listdir(class_files_path))
     for file in files:
         # Insert the section header
-        md.append(generate_formatted_title(file.split(".")[0]))
+        md.append(generate_formatted_title(file.split(".")[0], True, class_name.capitalize))
         with open("%s/%s" % (class_files_path, file)) as f:
             # Loop over each line, should be one spell name per line
             for line in f.readlines():
@@ -271,11 +269,6 @@ def generate_linked_spell_lists(spell_map):
             write_md_to_file(class_md, os.path.join(class_spell_lists_output, "%s_spells.md" % class_name))
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--offline", action="store_true", default=False)
-    args = parser.parse_args()
-    if args.offline:
-        print("Generating in offline mode")
     create_output_directories()
     spell_map = construct_spell_map()
     item_map = construct_item_map()

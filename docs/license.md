@@ -1,14 +1,16 @@
 # Legal Information
 
-Permission to copy,  modify  and  distribute  the  files  collectively known as 5thsrd.org is  granted  solely  through  the  use of the  Open  Gaming  License,  Version  1.0a.
+Permission to copy,  modify  and  distribute  the  files  collectively known as 5thsrd.org is  granted  solely  through  the  use of the  Open  Gaming  License,  Version  1.0a.  
 
-This material is  being  released  using  the  Open  Gaming License Version  1.0a  and  you  should  read  and understand the  terms  of  that  license  before  using this material.     
+This material is  being  released  using  the  Open  Gaming License Version  1.0a  and  you  should  read  and understand the  terms  of  that  license  before  using this material.  
 
-The text of  the  Open  Gaming  License  itself  is  not  Open Game Content.  Instructions  on  using  the  License are provided  within  the  License  itself.     
+The text of  the  Open  Gaming  License  itself  is  not  Open Game Content.  Instructions  on  using  the  License are provided  within  the  License  itself.  
 
-All of the  rest  of 5thsrd.org is  Open  Game  Content  as  described in Section  1(d)  of  the  License.     
+All of the  rest  of 5thsrd.org is  Open  Game  Content  as  described in Section  1(d)  of  the  License.  
 
-The terms of  the  Open  Gaming  License  Version  1.0a  are as follows:     
+This  e-book  version  a  derivative  work of 5thsrd.org,  and  is  available  under  the  same  Open  Game  Content  license.
+
+The terms of  the  Open  Gaming  License  Version  1.0a  are as follows:  
 
 ## OPEN GAME LICENSE  Version  1.0a     
 
@@ -32,6 +34,8 @@ The following text  is  the  property  of  Wizards  of  the  Coast, Inc. and  is
 
 System  Reference  Document  5.1  Copyright  2016,  Wizards  of  the  Coast,  Inc.;  Authors  Mike  Mearls,  Jeremy  Crawford,  Chris  Perkins,  Rodney  Thompson,  Peter  Lee,  James  Wyatt,  Robert  J.  Schwalb,  Bruce  R.  Cordell,  Chris  Sims,  and  Steve  Townshend,  based  on  original  material  by  E.  Gary  Gygax  and  Dave  Arneson.      
 
-5thsrd.org, copyright 2016, [vitusventure](https://github.com/vitusventure).
+5thsrd.org, copyright 2016 [vitusventure](https://github.com/vitusventure).
+
+E-book version, copyright 2017 [kukiric](https://github.com/kukiric).
 
 END  OF  LICENSE
